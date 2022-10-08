@@ -86,7 +86,7 @@ public class UserController {
             User u = new User(user.getNickName(),user.getPassword(), user.getFirstName(), user.getSecondName());
             userRepository.save(u);
             model.addAttribute("user",u);
-            return new ModelAndView("userPage");
+            return new ModelAndView("userPage1");
         }
         return new ModelAndView("login");
     }
@@ -157,7 +157,7 @@ public class UserController {
             model.addAttribute("balance",balance);
 
             if (u.getUserType()== User.UserType.WORKER)
-                return new ModelAndView("userPage");
+                return new ModelAndView("userPage1");
             if (u.getUserType()== User.UserType.ADMIN)
                 return new ModelAndView("adminPage");
         }
