@@ -27,7 +27,7 @@ public class CertificateController {
     {
         if (userTokenRepository.existsByUserIdAndToken(userId,token))
         {
-            User user = userTokenRepository.getByIdAndToken(userId,token);
+            User user = userTokenRepository.getByUserIdAndToken(userId,token).getUser();
             if (user.getUserType() == User.UserType.ADMIN)
             {
                 Certificate certificate = new Certificate(name, 100);

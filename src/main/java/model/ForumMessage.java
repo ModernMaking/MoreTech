@@ -20,6 +20,10 @@ public class ForumMessage {
     @JoinColumn(name = "owner_id")
     private User owner;
 
+    public ForumMessage() {
+
+    }
+
     public User getOwner() {
         return owner;
     }
@@ -42,5 +46,12 @@ public class ForumMessage {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ForumMessage(User owner, ForumTopic topic, String message)
+    {
+        this.owner=owner;
+        this.topic=topic;
+        this.message=message;
     }
 }

@@ -55,7 +55,7 @@ public class MarketplaceController {
     {
         model.addAttribute("token",token);
         model.addAttribute("id",id);
-        User user = userTokenRepository.getByIdAndToken(id,token);
+        User user = userTokenRepository.getByUserIdAndToken(id,token).getUser();
         model.addAttribute("user",user);
         model.addAttribute("products",getAllProducts());
         return new ModelAndView("productPage");

@@ -101,7 +101,7 @@ public class UserController {
     {
         User user = new User();
         model.addAttribute("user",user);
-        return new ModelAndView("register");
+        return new ModelAndView("register1");
     }
 
     @PostMapping("/register")
@@ -198,7 +198,7 @@ public class UserController {
     public ModelAndView loginForm(Model model)
     {
         model.addAttribute("user",new User());
-        return new ModelAndView("login");
+        return new ModelAndView("login1");
     }
 
     @PostMapping("/buyProduct")
@@ -214,5 +214,26 @@ public class UserController {
             return true;
         }
         return false;
+    }
+
+    @GetMapping("/all")
+    public List<User> getAll()
+    {
+        List<User> users = new ArrayList<>();
+        Iterable<User> users1 = userRepository.findAll();
+        users1.forEach(new Consumer<User>() {
+            @Override
+            public void accept(User user) {
+                users.add(user);
+            }
+        });
+        return users;
+    }
+
+    @GetMapping("/employeeList")
+    public ModelAndView getEmployeeList(Model model)
+    {
+        model.addAttribute("users",getAll());
+        return new ModelAndView("employeeList");
     }
 }

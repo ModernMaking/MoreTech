@@ -30,6 +30,9 @@ public class EventController {
     @org.springframework.beans.factory.annotation.Autowired(required=true)
     private UserRepository userRepository;
 
+    @org.springframework.beans.factory.annotation.Autowired(required=true)
+    private UserTokenRepository userTokenRepository;
+
     @PostMapping("/add")
     public Long addEvent(String name, String description, Date date)
     {
@@ -71,10 +74,14 @@ public class EventController {
     }
 
     @GetMapping("/eventPage")
-    public ModelAndView getEventPage(Model model)
+    public ModelAndView getEventPage(Model model, String token, Long id)
     {
+        model.addAttribute("token",token);
+        model.addAttribute("id",id);
+        User user = userTokenRepository.getByUserIdAndToken(id,token).getUser();
+        model.addAttribute("user",user);
         model.addAttribute("events",getAllEvents());
-        return new ModelAndView("eventPage");
+        return new ModelAndView("eventList");
     }
 
     @GetMapping("/byTag/{tag_id}")
