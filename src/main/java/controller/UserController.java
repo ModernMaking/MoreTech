@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import repo.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 @RestController
 @RequestMapping("/user")
@@ -15,6 +17,9 @@ public class UserController {
 
     @org.springframework.beans.factory.annotation.Autowired(required=true)
     private UserRepository userRepository;
+
+    @org.springframework.beans.factory.annotation.Autowired(required=true)
+    NewsRepository newsRepository;
 
     @org.springframework.beans.factory.annotation.Autowired(required=true)
     private UserTokenRepository userTokenRepository;
@@ -30,6 +35,27 @@ public class UserController {
 
     @org.springframework.beans.factory.annotation.Autowired(required=true)
     ProductRepository productRepository;
+
+    @GetMapping("/")
+    public ModelAndView getIndex(Model model)
+    {
+        List<News> news = getNews();
+        model.addAttribute("news",news);
+        return new ModelAndView("index");
+    }
+
+    public List<News> getNews()
+    {
+        List<News> news = new ArrayList<>();
+        Iterable<News> n = newsRepository.findAll();
+        n.forEach(new Consumer<News>() {
+            @Override
+            public void accept(News news1) {
+                news.add(news1);
+            }
+        });
+        return news;
+    }
 
     @PostMapping("/add")
     public void add(String nickName, String password)
