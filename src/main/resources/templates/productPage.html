@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Bootstrap Table</title>
+
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <script>
+        function printToken()
+        {
+            var token = document.getElementById('token').innerText;
+            console.log(token)
+        }
+    </script>
+</head>
+<body>
+<p id="token" th:text="${token}"/>
+<th:block th:each="item : ${products}">
+    <p th:text="${item.name}"></p>
+    <button th:text="Купить" th:onclick="'printToken();'"></button>
+</th:block>
+
+
+</body>
+</html>

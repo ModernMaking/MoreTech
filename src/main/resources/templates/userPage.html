@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>
+        function createTransferForm()
+        {
+            var form = document.createElement("form");
+            var inputID = document.createElement("input");
+            var inputSum = document.createElement("input");
+            var button = document.createElement("button")
+            button.innerText="Перевести"
+            button.onclick = () => {
+                console.log("To ID:: "+inputID.value)
+                console.log("Sum:: "+inputSum.value)
+                return false;
+            }
+            form.appendChild(inputID)
+            form.appendChild(inputSum)
+            form.appendChild(button)
+            return form;
+        }
+    </script>
+</head>
+<body>
+<p th:text="${token}" id="token">
+<script>
+    var token = document.getElementById("token").innerText
+</script>
+<h1> Страница пользователя</h1>
+<p th:text="${user.firstName}+' '+${user.secondName}"></p>
+<p th:text="'Баланс: '+${balance}"></p>
+<div id="transfer-form"></div>
+<script>
+    var form = createTransferForm()
+    document.getElementById("transfer-form").appendChild(form)
+</script>
+
+<a th:href="'/marketplace/productPage?token='+${token}+'&id='+${user.id}">Маркетплейс</a>
+<a th:href="'/event/eventPage'">Список мероприятий</a>
+<a href="/user/login">Войти как другой пользователь</a>
+</body>
+</html>
