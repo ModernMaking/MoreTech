@@ -12,6 +12,11 @@
 ```rb
 git clone https://github.com/ModernMaking/MoreTech
 ```
+Переключиться на ветку master
+```rb
+git checkout master
+```
+
 4) Перейти в папку проекта
 ```rb
 cd MoreTech
