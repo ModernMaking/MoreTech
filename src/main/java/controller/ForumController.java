@@ -68,8 +68,10 @@ public class ForumController {
         model.addAttribute("forumTopic",forumTopic);
         List<ForumMessage> forumMessages = forumMessageRepository.findAllByTopicId(id);
         model.addAttribute("messages",forumMessages);
-        return new ModelAndView("getForumTopic");
+        return new ModelAndView("topicMessages");
     }
+
+
 
     @PostMapping("/topic/{topic_id}/sendMessage")
     public Long sendMessage(@PathVariable Long topic_id, Long userId, String token, String text)

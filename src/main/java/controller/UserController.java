@@ -96,6 +96,25 @@ public class UserController {
         return false;
     }
 
+
+    @PostMapping("/sendCoinsFromToLoginPassword")
+    public boolean sendCoinsFromToLoginPassword(String login, String password, Long toId, int sum, String description)
+    {
+        User from = userRepository.getUserByNickNameAndAndPassword(login,password);
+        if (from==null)
+            return false;
+        User to = userRepository.findById(toId).get();
+        int incomes = getUserIncomes(from);
+        if (incomes>=sum)
+        {
+            CoinTransfer coinTransfer = new CoinTransfer(to,from,sum);
+            coinTransferRepository.save(coinTransfer);
+            return true;
+        }
+        return false;
+    }
+
+
     @GetMapping("/register")
     public ModelAndView register(Model model)
     {

@@ -48,6 +48,14 @@ public class ForumMessage {
         this.id = id;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public ForumMessage(User owner, ForumTopic topic, String message)
     {
         this.owner=owner;
