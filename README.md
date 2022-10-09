@@ -57,10 +57,28 @@ http://localhost:8090
 ![image](https://user-images.githubusercontent.com/46486489/194738910-2b0d0ac4-e896-4068-96d6-2b9cbed8f962.png)
 
 controller - пакет контроллеров URL,  отвечающих за API
+
 model - Классы сущностей базы данных 
+
 repo - Репозитории сущностей базы данных. Имеются на каждый класс из model
 
 /resources/templates - шаблоны  HTML-страниц
 
 application.properties - свойства приложения (логин/пароль от базы данных и т.д.)
+
+## Примеры кода
+
+Контроллер на URL http://localhost:8090/user/
+
+![image](https://user-images.githubusercontent.com/46486489/194739037-a3bf6fc6-bfa1-4f43-94fe-3e175e56f82d.png)
+
+
+ API-метод регистрации http://localhost:8090/user/add
+ 
+ ![image](https://user-images.githubusercontent.com/46486489/194739045-f7e2a6f3-0a88-4f4e-a4dd-4d923eb9e13a.png)
+
+
+Генерация html-страницы по шаблону (шаблон в файле register1.html в папке templates)
+
+![image](https://user-images.githubusercontent.com/46486489/194739066-3d458529-add6-44ed-96ee-30cc21a463c7.png)
 
