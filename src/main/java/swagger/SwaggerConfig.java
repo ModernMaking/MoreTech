@@ -18,7 +18,7 @@ public class SwaggerConfig {
 
     public static final Contact DEFAULT_CONTACT = new Contact(
             "Modern Making",
-            "",
+            "http://localhost:8091/",
             "");
 
     public static final ApiInfo DEFAULT_API_INFO = new ApiInfo(
