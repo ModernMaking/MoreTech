@@ -31,6 +31,10 @@ public class User implements Serializable{
 
     private String secondName;
 
+    private String privateKey;
+
+    private String publicKey;
+
 
     public User() {
 
@@ -108,5 +112,21 @@ public class User implements Serializable{
 
     public void setSecondName(String secondName) {
         this.secondName = secondName;
+    }
+
+    public String getPrivateKey() {
+        return privateKey;
+    }
+
+    public String getPublicKey() {
+        return publicKey;
+    }
+
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
+    }
+
+    public void setPublicKey(String publicKey) {
+        this.publicKey = publicKey;
     }
 }
